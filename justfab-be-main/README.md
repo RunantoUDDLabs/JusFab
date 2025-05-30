@@ -73,17 +73,17 @@ A simplified view of the key folders and files:
 
 ## Contact
 
-- Repo owner/admin: minh.dangnhat@morningstudio.com
+- Repo owner/admin: gm.business@uddlabs.com
 - For issues, open a GitHub issue or contact the team.
 
 ## Notes
 
 - Ensure MongoDB is running before starting the app.
 - Default port is `3000` unless overridden in `.env`.
-- Telegram Bot must be authorized with correct webhook before use.
+- Telegram Bot must be authorized with the correct webhook before use.
 
 ## Known Issues
 
 ---
 
-_This project is maintained by Morning Studio._
+_UDDLabs maintains this project._
