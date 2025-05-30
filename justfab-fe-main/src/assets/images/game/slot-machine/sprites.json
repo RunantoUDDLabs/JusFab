@@ -1,0 +1,223 @@
+{"frames": {
+
+"bottle-25.png":
+{
+	"frame": {"x":1166,"y":742,"w":318,"h":439},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":318,"h":439},
+	"sourceSize": {"w":318,"h":439}
+},
+"bottle-50.png":
+{
+	"frame": {"x":867,"y":742,"w":299,"h":431},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":19,"y":0,"w":299,"h":431},
+	"sourceSize": {"w":318,"h":439}
+},
+"bottle-75.png":
+{
+	"frame": {"x":1484,"y":742,"w":318,"h":439},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":318,"h":439},
+	"sourceSize": {"w":318,"h":439}
+},
+"bottle-100.png":
+{
+	"frame": {"x":0,"y":1181,"w":318,"h":439},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":318,"h":439},
+	"sourceSize": {"w":318,"h":439}
+},
+"bottle.png":
+{
+	"frame": {"x":615,"y":742,"w":252,"h":418},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":0,"y":27,"w":252,"h":418},
+	"sourceSize": {"w":252,"h":445}
+},
+"Button X.png":
+{
+	"frame": {"x":570,"y":0,"w":222,"h":85},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":222,"h":85},
+	"sourceSize": {"w":222,"h":85}
+},
+"button-spin-normal.png":
+{
+	"frame": {"x":0,"y":195,"w":394,"h":204},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":394,"h":204},
+	"sourceSize": {"w":394,"h":204}
+},
+"button-spin-pressed.png":
+{
+	"frame": {"x":1648,"y":0,"w":398,"h":195},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":398,"h":195},
+	"sourceSize": {"w":398,"h":195}
+},
+"castle.png":
+{
+	"frame": {"x":906,"y":1731,"w":909,"h":1066},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":909,"h":1066},
+	"sourceSize": {"w":909,"h":1066}
+},
+"char.png":
+{
+	"frame": {"x":1398,"y":1181,"w":314,"h":550},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":314,"h":550},
+	"sourceSize": {"w":314,"h":550}
+},
+"close-jackpot.png":
+{
+	"frame": {"x":1118,"y":0,"w":114,"h":106},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":114,"h":106},
+	"sourceSize": {"w":114,"h":106}
+},
+"cloud-bottom.png":
+{
+	"frame": {"x":318,"y":1181,"w":1080,"h":483},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":1080,"h":483},
+	"sourceSize": {"w":1080,"h":483}
+},
+"cloud-top.png":
+{
+	"frame": {"x":0,"y":422,"w":1080,"h":295},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":1080,"h":295},
+	"sourceSize": {"w":1080,"h":295}
+},
+"coin.png":
+{
+	"frame": {"x":888,"y":0,"w":105,"h":101},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":105,"h":101},
+	"sourceSize": {"w":105,"h":101}
+},
+"Enegry.png":
+{
+	"frame": {"x":0,"y":0,"w":520,"h":52},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":520,"h":52},
+	"sourceSize": {"w":520,"h":52}
+},
+"energy.png":
+{
+	"frame": {"x":520,"y":0,"w":50,"h":74},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":50,"h":74},
+	"sourceSize": {"w":50,"h":74}
+},
+"food.png":
+{
+	"frame": {"x":1232,"y":0,"w":104,"h":106},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":104,"h":106},
+	"sourceSize": {"w":104,"h":106}
+},
+"jackpot-background.png":
+{
+	"frame": {"x":394,"y":195,"w":607,"h":227},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":607,"h":227},
+	"sourceSize": {"w":607,"h":227}
+},
+"jackpot-machine.png":
+{
+	"frame": {"x":0,"y":1731,"w":906,"h":646},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":906,"h":646},
+	"sourceSize": {"w":906,"h":646}
+},
+"JackPot.png":
+{
+	"frame": {"x":1080,"y":422,"w":637,"h":320},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":637,"h":320},
+	"sourceSize": {"w":637,"h":320}
+},
+"kapy.png":
+{
+	"frame": {"x":993,"y":0,"w":125,"h":105},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":125,"h":105},
+	"sourceSize": {"w":125,"h":105}
+},
+"machine-background.png":
+{
+	"frame": {"x":0,"y":742,"w":615,"h":399},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":615,"h":399},
+	"sourceSize": {"w":615,"h":399}
+},
+"mushroom.png":
+{
+	"frame": {"x":792,"y":0,"w":96,"h":99},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":96,"h":99},
+	"sourceSize": {"w":96,"h":99}
+},
+"shield.png":
+{
+	"frame": {"x":1438,"y":0,"w":113,"h":127},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":113,"h":127},
+	"sourceSize": {"w":113,"h":127}
+},
+"sword.png":
+{
+	"frame": {"x":1551,"y":0,"w":97,"h":158},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":97,"h":158},
+	"sourceSize": {"w":97,"h":158}
+},
+"treasure.png":
+{
+	"frame": {"x":1336,"y":0,"w":102,"h":110},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":102,"h":110},
+	"sourceSize": {"w":102,"h":110}
+}},
+"animations": {
+	"bottle": ["bottle-25.png","bottle-50.png","bottle-75.png","bottle-100.png"]
+},
+"meta": {
+	"app": "https://www.codeandweb.com/texturepacker",
+	"version": "1.1",
+	"image": "sprites.png",
+	"format": "RGBA8888",
+	"size": {"w":2048,"h":4096},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:87d5cbbc7a9def02fa6627ab9529b0f8:4372064d664dd1f5d40a84976e86dda1:1eabdf11f75e3a4fe3147baf7b5be24b$"
+}
+}

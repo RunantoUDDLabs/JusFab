@@ -1,0 +1,7 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.jump-in-anim {
+  @apply tw-animate-jump-in tw-animate-once tw-animate-duration-500;
+}

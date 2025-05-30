@@ -1,0 +1,664 @@
+openapi: "3.0.3"
+
+info:
+  title: JUST FAB
+  version: "1.0"
+
+servers:
+  - url: http://localhost:3000/
+  - url: https://api-smk.morningstudio.vn/
+  - url: https://api.justfab.wtf/
+
+tags:
+  - name: user
+  - name: asset
+
+components:
+  schemas:
+    User:
+      type: object
+      properties:
+        username:
+          type: string
+          description: username of the user.
+          example: "johnDoe123"
+        displayName:
+          type: string
+          description: Display name of the user.
+          example: "John Doe"
+        gold:
+          type: number
+          description: Amount of gold the user has.
+          default: 0
+          example: 50
+        token:
+          type: number
+          description: Amount of tokens the user has.
+          default: 0
+          example: 10
+        food:
+          type: number
+          description: Amount of food the user has.
+          default: 0
+          example: 5
+        energy:
+          type: number
+          description: Amount of energy the user has.
+          default: 0
+          example: 100
+        claimEnergyAt:
+          type: string
+          format: date-time
+          description: Timestamp when energy was last claimed.
+          example: "2023-01-01T00:00:00Z"
+        bonusEnergy:
+          type: number
+          description: Additional bonus energy the user may have.
+          default: 0
+          example: 20
+        role:
+          type: string
+          description: The user's role.
+          enum:
+            - USER
+            - MOD
+            - ADMIN
+            - ROOT
+          default: USER
+          example: USER
+        telegram:
+          type: object
+          description: Telegram related information for the user.
+          example: { "chatId": "123456789" }
+        slotMachinePlays:
+          type: number
+          description: Counts how many times the user played the slot machine.
+          default: 0
+          example: 3
+        createdAt:
+          type: string
+          format: date-time
+          description: The timestamp when the user was created.
+          example: "2023-01-01T00:00:00Z"
+        updatedAt:
+          type: string
+          format: date-time
+          description: The timestamp when the user was last updated.
+          example: "2023-01-01T00:00:00Z"
+
+    Item:
+      type: object
+      required:
+        - name
+        - supportedRarities
+        - rarity
+        - baseStats
+      properties:
+        _id:
+          type: string
+          description: Auto-generated ID of the item
+        name:
+          type: string
+          description: Name of the item
+        description:
+          type: string
+          description: Detailed description of the item
+          default: ""
+        category:
+          type: string
+          description: The category of the item
+          enum:
+            - WEAPON
+            - ARMOR
+            - PET
+            - ACCESSORY
+        photoUrl:
+          type: string
+          description: URL of the item's photo
+          default: ""
+        supportedRarities:
+          type: array
+          items:
+            type: string
+            enum:
+              - COMMON
+              - RARE
+              - ULTRA_RARE
+              - EPIC
+              - LEGENDARY
+              - MYTHIC
+          description: List of supported rarities for the item
+          default:
+            - COMMON
+            - RARE
+            - ULTRA_RARE
+            - EPIC
+            - LEGENDARY
+            - MYTHIC
+        rarity:
+          type: string
+          description: Current rarity of the item
+          enum:
+            - COMMON
+            - RARE
+            - ULTRA_RARE
+            - EPIC
+            - LEGENDARY
+            - MYTHIC
+        raritySkills:
+          type: object
+          additionalProperties:
+            type: array
+            items:
+              type: object
+              properties:
+                skill:
+                  type: string
+                  description: Skill ID (reference to Skill model)
+                stats:
+                  type: object
+                  additionalProperties:
+                    type: number
+                  description: Custom stats for the skill
+          description: Skills associated with each rarity level
+        skills:
+          type: array
+          items:
+            type: object
+            properties:
+              skill:
+                type: string
+                description: Skill ID (reference to Skill model)
+              stats:
+                type: object
+                additionalProperties:
+                  type: number
+                description: Custom stats for the skill
+          description: Current skills assigned to the item
+        baseStats:
+          type: object
+          properties:
+            hp:
+              type: number
+              description: Base health points of the item
+              default: 100
+            attack:
+              type: number
+              description: Base attack power of the item
+              default: 50
+            defense:
+              type: number
+              description: Base defense value of the item
+              default: 30
+            luck:
+              type: number
+              description: Base luck value of the item
+              default: 10
+          description: Base stats of the item
+        currentStats:
+          type: object
+          properties:
+            hp:
+              type: number
+              description: Current health points of the item
+            attack:
+              type: number
+              description: Current attack power of the item
+            defense:
+              type: number
+              description: Current defense value of the item
+            luck:
+              type: number
+              description: Current luck value of the item
+          description: Current stats of the item
+        level:
+          type: number
+          description: Current level of the item
+          default: 1
+        rarityUpgrades:
+          type: number
+          description: Number of times the item's rarity has been upgraded
+          default: 0
+        deleted:
+          type: boolean
+          description: Indicates whether the item has been deleted
+          default: false
+      example:
+        _id: "item123"
+        name: "Legendary Sword"
+        description: "A powerful sword of legend."
+        photoUrl: "https://example.com/images/legendary-sword.png"
+        supportedRarities: ["COMMON", "RARE", "ULTRA_RARE", "EPIC", "LEGENDARY"]
+        rarity: "LEGENDARY"
+        raritySkills:
+          LEGENDARY:
+            - skill: "power-strike"
+              stats:
+                damage: 50
+                cooldown: 5
+        skills:
+          - skill: "quick-strike"
+            stats:
+              damage: 20
+              cooldown: 3
+        baseStats:
+          hp: 100
+          attack: 50
+          defense: 30
+          luck: 10
+        currentStats:
+          hp: 110
+          attack: 55
+          defense: 33
+          luck: 11
+        level: 2
+        rarityUpgrades: 1
+        deleted: false
+
+    UserItem:
+      type: object
+      required:
+        - user
+        - item
+      properties:
+        id:
+          type: string
+          example: "660f1e47b1a3c02df84d0e8a"
+        user:
+          type: string
+          description: Reference to the user
+          example: "660f1e47b1a3c02df84d0e8b"
+        item:
+          type: string
+          description: Reference to the item
+          example: "660f1e47b1a3c02df84d0e8c"
+        level:
+          type: integer
+          default: 1
+          minimum: 1
+          example: 3
+        rarity:
+          type: string
+          enum: ["COMMON", "RARE", "ULTRA_RARE", "EPIC", "LEGENDARY", "MYTHIC"]
+          default: "COMMON"
+          example: "RARE"
+        currentStats:
+          type: object
+          properties:
+            hp:
+              type: number
+              minimum: 0
+              example: 100
+            attack:
+              type: number
+              minimum: 0
+              example: 50
+            defense:
+              type: number
+              minimum: 0
+              example: 30
+            luck:
+              type: number
+              minimum: 0
+              example: 10
+        currentSkills:
+          type: array
+          items:
+            type: string
+          example: ["Fireball", "Heal", "Lightning Strike"]
+
+    Skill:
+      type: object
+      required:
+        - name
+      properties:
+        _id:
+          type: string
+          description: Auto-generated unique identifier for the skill
+        slug:
+          type: string
+          description: URL-friendly slugified version of the skill name
+        name:
+          type: string
+          description: Name of the skill
+        description:
+          type: string
+          description: Detailed description of the skill
+          default: ""
+        requiredStats:
+          type: array
+          items:
+            type: string
+          description: List of stats required for the skill
+      example:
+        _id: "64fd1234e8c3fa12d67890ab"
+        slug: "quick-strike"
+        name: "Quick Strike"
+        description: "A fast and powerful attack."
+        requiredStats:
+          - damage
+          - cooldown
+
+    Fusion:
+      type: object
+      required:
+        - requiredItems
+        - resultItem
+      properties:
+        _id:
+          type: string
+          description: Unique identifier for the fusion recipe
+          example: "64a4c66f14b9a93e7a344b0f"
+        requiredItems:
+          type: array
+          description: List of item IDs required for the fusion
+          items:
+            type: string
+            description: ObjectId of the required item
+            example: "64a4c66f14b9a93e7a344b0a"
+        resultItem:
+          type: string
+          description: ObjectId of the resulting item
+          example: "64a4c66f14b9a93e7a344b0d"
+        additionalRequirements:
+          type: string
+          description: Extra conditions or requirements for fusion
+          example: "Minimum level 10"
+        fusionCost:
+          type: number
+          description: Cost of performing the fusion (e.g., currency)
+          example: 500
+        cooldown:
+          type: number
+          description: Cooldown time (in seconds) before the fusion can be performed again
+          example: 3600
+        status:
+          type: string
+          description: Status of the fusion recipe
+          enum:
+            - ACTIVE
+            - DISABLED
+          example: "ACTIVE"
+        createdAt:
+          type: string
+          format: date-time
+          description: Timestamp when the fusion recipe was created
+          example: "2025-01-01T10:00:00.000Z"
+        updatedAt:
+          type: string
+          format: date-time
+          description: Timestamp when the fusion recipe was last updated
+          example: "2025-01-01T10:00:00.000Z"
+
+    Inventory:
+      type: object
+      properties:
+        user:
+          type: string
+          description: The user ID.
+          example: "64a4c66f14b9a93e7a344b0f"
+        items:
+          type: array
+          description: List of inventory items.
+          items:
+            type: object
+            properties:
+              item:
+                type: string
+                description: The item ID.
+                example: "64a4c66f14b9a93e7a344b0a"
+              quantity:
+                type: number
+                description: Quantity of the item.
+                example: 2
+
+    Reward:
+      type: object
+      properties:
+        type:
+          type: string
+          enum:
+            - GOLD
+            - TOKEN
+            - FOOD
+            - ITEM
+            - JACKPOT
+            - SPIN
+            - POOL_PERCENTAGE
+            - ENERGY
+          description: The type of the reward.
+          example: GOLD
+        value:
+          type: number
+          description: Amount of the reward.
+          default: 1
+          example: 100
+        item:
+          type: object
+          properties:
+            rarity:
+              type: string
+              description: The rarity of the item.
+              example: common
+            level:
+              type: number
+              description: The level of the item.
+              default: 1
+              example: 1
+          default:
+            rarity: ""
+            level: 1
+        createdAt:
+          type: string
+          format: date-time
+          description: The timestamp when the reward was created.
+          example: "2023-01-01T00:00:00Z"
+        updatedAt:
+          type: string
+          format: date-time
+          description: The timestamp when the reward was last updated.
+          example: "2023-01-01T00:00:00Z"
+      required:
+        - type
+        - value
+
+    RewardEntry:
+      type: object
+      properties:
+        _id:
+          type: string
+          example: "609d1f2c8f8a2b001c8d4567"
+        reward:
+          $ref: "#/components/schemas/Reward"
+        claimed:
+          type: boolean
+          description: "Indicates if the reward has been claimed."
+          default: false
+          example: false
+        reason:
+          type: string
+          description: "Optional reason for the reward (e.g., 'daily streak', 'mission completion', 'referral bonus')."
+          example: "daily streak"
+        level:
+          type: number
+          description: "Optional numerical value representing the count, streak, or tier for this reward."
+          example: 3
+      required:
+        - reward
+
+    UserRewards:
+      type: object
+      properties:
+        user:
+          type: string
+          description: The ID of the user (MongoDB ObjectId in string format).
+        rewards:
+          type: array
+          description: An array of reward entries for the user.
+          items:
+            $ref: "#/components/schemas/RewardEntry"
+      required:
+        - user
+
+    SlotMachine:
+      type: object
+      required:
+        - name
+        - reels
+        - combinations
+      properties:
+        name:
+          type: string
+          description: Name of the slot machine
+          example: "Lucky Spins"
+        reels:
+          type: array
+          description: List of reels in the slot machine
+          items:
+            type: object
+            properties:
+              symbols:
+                type: array
+                description: List of symbols and their probabilities on the reel
+                items:
+                  type: object
+                  properties:
+                    symbol:
+                      type: string
+                      description: The symbol on the reel
+                      example: "X"
+                    ratio:
+                      type: number
+                      description: Probability of the symbol appearing
+                      example: 40
+        combinations:
+          type: array
+          description: Winning combinations and their rewards
+          items:
+            type: object
+            properties:
+              combination:
+                type: array
+                description: List of symbols required for the reward
+                items:
+                  type: string
+                  example: "X"
+              reward:
+                $ref: "#/components/schemas/Reward"
+
+    JackPotReward:
+      type: object
+      required:
+        - reward
+        - chance
+      properties:
+        description:
+          type: string
+          description: Description of the jackpot reward
+          example: "A rare item reward."
+        reward:
+          $ref: "#/components/schemas/Reward"
+        chance:
+          type: number
+          description: Probability weight of this reward
+          example: 50
+        priority:
+          type: number
+          description: Priority of the reward (higher numbers are more prioritized)
+          example: 1
+
+    Jackpot:
+      type: object
+      required:
+        - name
+        - rewards
+      properties:
+        _id:
+          type: string
+          description: Unique ID of the jackpot
+          example: "64a4c66f14b9a93e7a344b0f"
+        name:
+          type: string
+          description: Name of the jackpot
+          example: "Mega Jackpot"
+        pool:
+          type: number
+          description: Current amount in the jackpot pool
+          example: 10000
+        rewards:
+          type: array
+          description: List of rewards in the jackpot
+          items:
+            $ref: "#/components/schemas/JackPotReward"
+        createdAt:
+          type: string
+          format: date-time
+          description: Creation timestamp of the jackpot
+          example: "2025-01-01T10:00:00.000Z"
+        updatedAt:
+          type: string
+          format: date-time
+          description: Last update timestamp of the jackpot
+          example: "2025-01-02T12:00:00.000Z"
+
+    Task:
+      type: object
+      properties:
+        _id:
+          type: string
+          example: "60f7f0e93f1b2c001c8d4567"
+        title:
+          type: string
+          example: "Join Telegram Group"
+        description:
+          type: string
+          example: "Join our Telegram group for updates."
+        type:
+          type: string
+          enum: [LINK, TELEGRAM]
+          example: TELEGRAM
+        target:
+          type: string
+          example: "https://t.me/yourgroup"
+        reward:
+          $ref: "#/components/schemas/Reward"
+        icon:
+          type: string
+          example: "https://example.com/task-icon.png"
+        group:
+          type: string
+          example: "609d1f2c8f8a2b001c8d4567"
+        createdAt:
+          type: string
+          format: date-time
+        updatedAt:
+          type: string
+          format: date-time
+
+    TaskGroup:
+      type: object
+      properties:
+        _id:
+          type: string
+          example: "60d8c9f82f4b5c39c0c8e3aa"
+        name:
+          type: string
+          example: "Project Management"
+        icon:
+          type: string
+          example: "https://example.com/icon.png"
+        parent:
+          type: string
+          description: Optional parent task group ID
+          example: "60d8c9f82f4b5c39c0c8e3bb"
+
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+
+security:
+  - bearerAuth: []
+
+paths: {}

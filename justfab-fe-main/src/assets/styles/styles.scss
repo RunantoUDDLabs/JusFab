@@ -1,0 +1,75 @@
+@use "./animations.css";
+
+html,
+body {
+  /* overscroll-behavior: none; */
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: none;
+}
+/* html {
+  transform: scale(1);
+  transform-origin: top left;
+} */
+
+#app {
+  height: 100vh;
+  max-height: -webkit-fill-available;
+}
+
+img {
+  pointer-events: none;
+  user-select: none;
+  -webkit-user-drag: none;
+}
+
+.shake-horizontal {
+  -webkit-animation: shake-horizontal 0.8s
+    cubic-bezier(0.455, 0.03, 0.515, 0.955) both;
+  animation: shake-horizontal 0.8s cubic-bezier(0.455, 0.03, 0.515, 0.955) both;
+}
+
+.layout-wrapper {
+  block-size: 100%;
+}
+
+.content-wrapper {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  min-block-size: 100dvh;
+  transition: padding-inline-start 0.2s ease-in-out;
+  will-change: padding-inline-start;
+  margin-block-start: 1rem;
+  inline-size: 100%;
+  margin-inline: auto;
+  max-inline-size: 1440px;
+  padding-block: 1.5rem;
+  padding-inline: 1.5rem;
+}
+
+.page-content {
+}
+
+.game-container {
+  font-family: "DynaPuff", sans-serif;
+  overflow: hidden;
+}
+
+.v-btn {
+  min-width: 0 !important;
+}
+
+.v-text-field {
+  input {
+    min-height: 0 !important;
+    padding: clamp(12px, 5%, 12px) clamp(6px, 5%, 6px) clamp(12px, 5%, 12px)
+      clamp(16px, 5%, 16px);
+  }
+}
+.disable-element {
+  pointer-events: none;
+  user-select: none;
+  -webkit-user-drag: none;
+  filter: grayscale(100%);
+}
