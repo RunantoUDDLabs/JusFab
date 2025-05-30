@@ -68,7 +68,7 @@ The `vite.config.js` file configures the development and build behavior of the p
 
 - Custom `base` path for deploying under a subdirectory (if applicable)
 - Aliases defined using `@` for cleaner imports
-- Integration with Vuetify plugin and automatic components resolution
+- Integration with the Vuetify plugin and automatic component resolution
 - Environment variables are loaded from `.env.*` files based on the mode
 
 Adjust these settings as needed when deploying to different environments or customizing the build.
